@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Georgia, serif;
+}
+
+body {
+  background: #05070d;
+  color: white;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* Cursor */
+.cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: orange;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.7;
+}
+
+/* Background */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.9)),
+    url("https://images.unsplash.com/photo-1549887534-1541e9326642?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Fog */
+.fog {
+  position: fixed;
+  inset: 0;
+  background: url("https://i.ibb.co/7QpKsCX/fog.png");
+  background-size: cover;
+  opacity: 0.15;
+  z-index: -4;
+  animation: fogMove 60s linear infinite;
+}
+
+@keyframes fogMove {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 0; }
+}
+
+/* Fire glow */
+.fire {
+  position: fixed;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255,80,0,0.6), transparent 70%);
+  z-index: -3;
+}
+
+/* Flying dragon */
+.dragon {
+  position: fixed;
+  top: 10%;
+  left: -200px;
+  font-size: 80px;
+  opacity: 0.25;
+  animation: fly 20s linear infinite;
+  z-index: -2;
+}
+
+@keyframes fly {
+  0% { left: -200px; }
+  100% { left: 120%; }
+}
+
+/* Sparks */
+.spark {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: orange;
+  border-radius: 50%;
+  box-shadow: 0 0 10px orange;
+  z-index: -1;
+  animation: rise 6s linear infinite;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+/* Navbar */
+nav {
+  position: sticky;
+  top: 0;
+  text-align: center;
+  padding: 14px;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+nav a {
+  margin: 0 14px;
+  color: #f87171;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: white;
+  text-shadow: 0 0 10px red;
+}
+
+/* Hero */
+header {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero {
+  padding: 45px;
+  border: 1px solid red;
+  border-radius: 22px;
+  background: rgba(10, 10, 15, 0.75);
+  box-shadow: 0 0 45px rgba(255,0,0,0.45);
+}
+
+.sigil {
+  width: 130px;
+  height: 130px;
+  margin: auto;
+  margin-bottom: 20px;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/House_Targaryen.svg/1024px-House_Targaryen.svg.png") center/contain no-repeat;
+  filter: drop-shadow(0 0 15px red);
+}
+
+h1 {
+  font-size: 3rem;
+  text-shadow: 0 0 15px red;
+}
+
+h2 {
+  color: #f87171;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+p {
+  color: #d1d5db;
+}
+
+/* Sections */
+section {
+  padding: 70px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(31, 41, 55, 0.85);
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid #ef4444;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px red;
+}
+
+/* Click fire */
+.dragon-fire {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, orange, red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  animation: fireBlast 1s linear forwards;
+}
+
+@keyframes fireBlast {
+  to {
+    transform: translateY(-100px) scale(0);
+    opacity: 0;
+  }
+}
